@@ -1,0 +1,134 @@
+:root {
+    --color_nav_primary: #000;
+    --color_nav_secondary: #fff;
+}
+
+* {
+    outline: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightblue;
+    font-family: sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--color_nav_primary);
+    color: var(--color_nav_secondary);
+    padding: 10px 0;
+}
+
+nav .container {
+    margin: 0 50px;
+}
+
+nav header {
+    display: inline;
+}
+
+nav input.checkbox {
+    float: right;
+}
+
+nav label.hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid var(--color_nav_secondary);
+    border-radius: 7px;
+}
+
+nav label.hamburger span.icon,
+nav label.hamburger span.icon::before,
+nav label.hamburger span.icon::after {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color_nav_secondary);
+    border-radius: 10px;
+    position: relative;
+    transition: 0.5s ease-out;
+}
+
+nav label.hamburger span.icon::before {
+    content: '';
+    margin-top: -8px;
+}
+
+nav label.hamburger span.icon::after {
+    content: '';
+    margin-top: 13px;
+}
+
+nav ul.menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-out;
+    list-style: none;
+    text-align: center;
+}
+
+nav input.checkbox {
+    display: none;
+}
+
+nav input.checkbox:checked ~ ul.menu {
+    max-height: 300px;
+}
+
+nav input.checkbox:checked ~ label.hamburger span.icon {
+    background-color: transparent;
+}
+
+nav input.checkbox:checked ~ label.hamburger span.icon::before {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+nav input.checkbox:checked ~ label.hamburger span.icon::after {
+    transform: rotate(45deg);
+    top: -8px;
+}
+
+nav ul.menu li a {
+    display: block;
+    width: 100%;
+    color: var(--color_nav_secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px 10px;
+}
+
+nav ul.menu li a:hover {
+    background-color: #333;
+}
+
+
+/*+++++ Media Query +++++*/
+@media (orientation: landscape) and (min-width: 750px) {
+    nav ul.menu {
+        float: right;
+        max-height: 100%;
+    }
+    nav label.hamburger {
+        display: none;
+    }
+    nav ul.menu li, nav ul.menu li a {
+        display: inline-block;
+    }
+}
